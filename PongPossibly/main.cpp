@@ -6,12 +6,20 @@ void display() {
     glLoadIdentity();  // Reset transformations
 
     // Draw a red rectangle
-    glColor3f(1.0, 0.0, 0.0); // Red color
     glBegin(GL_QUADS);
+    glColor3f(1.0, 0.0, 1.0); // Red color
     glVertex2f(-0.5f, -0.5f);
     glVertex2f(0.5f, -0.5f);
+    glColor3f(1.0, 0.5, 1.0); // Red color
     glVertex2f(0.5f, 0.5f);
     glVertex2f(-0.5f, 0.5f);
+
+    
+    glColor3f(1.0, 0.0, 0.0); // Red color
+    glVertex2f(-0.1f, -0.1f);
+    glVertex2f(0.1f, -0.1f);
+    glVertex2f(0.1f, 0.1f);
+    glVertex2f(-0.1f, 0.1f);
     glEnd();
 
     glFlush(); // Render the frame
