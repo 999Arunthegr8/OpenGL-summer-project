@@ -1,0 +1,9 @@
+﻿main.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowPosition referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_glutInitWindowSize referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_glutInitDisplayMode referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_glutMainLoop referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp_glutDisplayFunc referenced in function main
+main.obj : error LNK2019: unresolved external symbol __imp___glutInitWithExit referenced in function glutInit_ATEXIT_HACK
+main.obj : error LNK2019: unresolved external symbol __imp___glutCreateWindowWithExit referenced in function glutCreateWindow_ATEXIT_HACK
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\Dependencies\freeglut\lib\freeglut.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\x64\Debug\PongPossibly.exe : fatal error LNK1120: 7 unresolved externals
