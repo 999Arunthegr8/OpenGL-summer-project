@@ -1,51 +1,94 @@
 #include <GL/glut.h>
+#include <iostream>
+#include <cmath>
 
-// Display function
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT);  // Clear the screen
-    glLoadIdentity();  // Reset transformations
+const float PI = 3.14159265358979323846f;
 
-    // Draw a red rectangle
-    glBegin(GL_QUADS);
-    glColor3f(1.0, 0.0, 1.0); // Red color
-    glVertex2f(-0.5f, -0.5f);
-    glVertex2f(0.5f, -0.5f);
-    glColor3f(1.0, 0.5, 1.0); // Red color
-    glVertex2f(0.5f, 0.5f);
-    glVertex2f(-0.5f, 0.5f);
+//paddle properties
+float paddleX = -0.9f, paddleY = 0.0f;
+const float paddleWidth = 0.04f, paddleHeight = 0.2f;
+const float paddleSpeed = 0.05f;
 
-    
-    glColor3f(1.0, 0.0, 0.0); // Red color
-    glVertex2f(-0.1f, -0.1f);
-    glVertex2f(0.1f, -0.1f);
-    glVertex2f(0.1f, 0.1f);
-    glVertex2f(-0.1f, 0.1f);
-    glEnd();
+static void display()
+{
+	glClearColor(0.15, 0.5, 0.9, 1.0);
+	glClear(GL_COLOR_BUFFER_BIT);
 
-    glFlush(); // Render the frame
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 0.0);
+	glVertex2f(paddleX, paddleY + paddleHeight);
+	glVertex2f(paddleX, paddleY);
+	glColor3f(1.0, 0.0, 0.0);
+	glVertex2f(paddleX + paddleWidth, paddleY);
+	glVertex2f(paddleX + paddleWidth, paddleY + paddleHeight);
+	glEnd();
+
+	glColor3f(1.0, 1.0, 1.0);
+	glBegin(GL_TRIANGLE_FAN);
+	glVertex2f(0, 0);  // Center of the circle
+	for (int i = 0; i <= 50; i++) {
+		float angle = 2.0f * PI * i / 50;
+		float x = 0 + 0.025 * cos(angle);
+		float y = 0 + 0.025 * sin(angle);
+		glVertex2f(x, y);
+	}
+	glEnd();
+
+	glutSwapBuffers();
 }
 
-// Initialization function
-void init() {
-    glClearColor(1.0, 1.0, 0.0, 1.0); // Yellow background
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    glOrtho(-1, 1, -1, 1, -1, 1); // 2D projection
-    glMatrixMode(GL_MODELVIEW);
+static void init()
+{
+	glClearColor(0.2, 0.2, 0.8, 1.0);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 }
 
-// Main function
-int main(int argc, char** argv) {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Single buffering with RGB mode
-    glutInitWindowSize(500, 500);
-    glutInitWindowPosition(200, 100);
+void keyboard(unsigned char key, int x, int y)
+{
+	switch (key)
+	{
+	case 'w':
+		if (paddleY < 1)
+		{
+			std::cout << "move up" << std::endl;
+			paddleY += paddleSpeed;
+		}
+		break;
 
-    glutCreateWindow("GLUT Test");
+	case 's':
+		if (paddleY - 0.1 > -1)
+		{
+			std::cout << "move down" << std::endl;
+			paddleY -= paddleSpeed;
+		}
+		break;
+	}
+}
 
-    init(); // Initialize OpenGL
-    glutDisplayFunc(display); // Register display callback
+void timer(int)
+{
+	glutPostRedisplay();
+	glutTimerFunc(1000 / 60, timer, 0);
+}
 
-    glutMainLoop(); // Start the main loop
-    return 0;
+int main(int argc, char** argv)
+{
+	glutInit(&argc, argv);
+	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+
+	glutInitWindowPosition(100, 100);
+	glutInitWindowSize(500, 500);
+	
+	glutCreateWindow("Animation");
+
+	glClearColor(0.0, 0.0, 0.0, 1.0);
+	glutDisplayFunc(display);
+
+	glutKeyboardFunc(keyboard);
+	glutTimerFunc(0, timer, 0);
+
+	glutMainLoop();
+	return 0;
 }
