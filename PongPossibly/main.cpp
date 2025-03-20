@@ -9,7 +9,7 @@ float paddleX = -0.9f, paddleY = 0.0f;
 const float paddleWidth = 0.04f, paddleHeight = 0.2f;
 const float paddleSpeed = 0.05f;
 
-static void display()
+static void onePlayerMode()
 {
 	glClearColor(0.15, 0.5, 0.9, 1.0);
 	glClear(GL_COLOR_BUFFER_BIT);
@@ -84,7 +84,7 @@ int main(int argc, char** argv)
 	glutCreateWindow("Animation");
 
 	glClearColor(0.0, 0.0, 0.0, 1.0);
-	glutDisplayFunc(display);
+	glutDisplayFunc(onePlayerMode);
 
 	glutKeyboardFunc(keyboard);
 	glutTimerFunc(0, timer, 0);
