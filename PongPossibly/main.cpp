@@ -1,10 +1,11 @@
-//two players 2d ping pong
 #include <GL/glut.h>
 #include <stdio.h>
+#include <stdbool.h>
 
 float ballX = 0.0f, ballY = 0.0f, ballDirX = 0.02f, ballDirY = 0.01f;
 float paddle1Y = 0.0f, paddle2Y = 0.0f;
 int score1 = 0, score2 = 0;
+bool isPaused = false;
 
 void drawText(float x, float y, char* string) {
     glRasterPos2f(x, y);
@@ -16,11 +17,11 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
 
-    // Set background color (blue)
+    // Set background color (white)
     glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
 
-    // Draw border (white)
-    glColor3f(0.0f, 0.0f, 0.0f);  // White color for border
+    // Draw border (black)
+    glColor3f(0.0f, 0.0f, 0.0f);
     glBegin(GL_LINES);
     glVertex2f(-1.0f, 1.0f);
     glVertex2f(1.0f, 1.0f);
@@ -36,7 +37,7 @@ void display() {
     glEnd();
 
     // Draw ball
-    glColor3f(0.921f, 0.203f, 0.835f);  //
+    glColor3f(0.921f, 0.203f, 0.835f);
     glBegin(GL_QUADS);
     glVertex2f(ballX - 0.02f, ballY - 0.02f);
     glVertex2f(ballX + 0.02f, ballY - 0.02f);
@@ -44,8 +45,8 @@ void display() {
     glVertex2f(ballX - 0.02f, ballY + 0.02f);
     glEnd();
 
-    // Draw paddles (left: red, right: red)
-    glColor3f(1.0f, 0.0f, 0.0f);  // Red color for paddles
+    // Draw paddles (red)
+    glColor3f(1.0f, 0.0f, 0.0f);
     glBegin(GL_QUADS);
     glVertex2f(-0.9f, paddle1Y - 0.1f);
     glVertex2f(-0.88f, paddle1Y - 0.1f);
@@ -67,51 +68,52 @@ void display() {
 }
 
 void update(int value) {
-    ballX += ballDirX;
-    ballY += ballDirY;
+    if (!isPaused) {
+        ballX += ballDirX;
+        ballY += ballDirY;
 
-    // Collision with top and bottom walls
-    if (ballY > 1.0f || ballY < -1.0f)
-        ballDirY = -ballDirY;
+        // Collision with top and bottom walls
+        if (ballY > 0.98f || ballY < -0.98f)
+            ballDirY = -ballDirY;
 
-    // Collision with paddles
-    if ((ballX < -0.88f && ballY < paddle1Y + 0.1f && ballY > paddle1Y - 0.1f) ||
-        (ballX > 0.88f && ballY < paddle2Y + 0.1f && ballY > paddle2Y - 0.1f)) {
-        ballDirX = -ballDirX;
-    }
+        // Collision with paddles
+        if ((ballX < -0.88f && ballY < paddle1Y + 0.1f && ballY > paddle1Y - 0.1f) ||
+            (ballX > 0.88f && ballY < paddle2Y + 0.1f && ballY > paddle2Y - 0.1f)) {
+            ballDirX = -ballDirX;
+        }
 
-    // Scoring
-    if (ballX < -1.0f) {
-        score2++;
-        ballX = 0.0f;
-        ballY = 0.0f;
-        ballDirX = 0.02f;
-        if (score2 >= 10) {
-            printf("Player 2 wins! Game Over!\n");
-            exit(0);  // Ends the game
+        // Scoring
+        if (ballX < -1.0f) {
+            score2++;
+            ballX = 0.0f;
+            ballY = 0.0f;
+            ballDirX = 0.02f;
+            if (score2 >= 10) {
+                printf("Player 2 wins! Game Over!\n");
+                exit(0);
+            }
+        }
+        if (ballX > 1.0f) {
+            score1++;
+            ballX = 0.0f;
+            ballY = 0.0f;
+            ballDirX = -0.02f;
+            if (score1 >= 10) {
+                printf("Player 1 wins! Game Over!\n");
+                exit(0);
+            }
         }
     }
-    if (ballX > 1.0f) {
-        score1++;
-        ballX = 0.0f;
-        ballY = 0.0f;
-        ballDirX = -0.02f;
-        if (score1 >= 10) {
-            printf("Player 1 wins! Game Over!\n");
-            exit(0);  // Ends the game
-        }
-    }
-
-
     glutPostRedisplay();
     glutTimerFunc(30, update, 0);
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    if (key == 'w' && paddle1Y < 0.9f) paddle1Y += 0.1f;
-    if (key == 's' && paddle1Y > -0.9f) paddle1Y -= 0.1f;
-    if (key == 'o' && paddle2Y < 0.9f) paddle2Y += 0.1f;
-    if (key == 'l' && paddle2Y > -0.9f) paddle2Y -= 0.1f;
+    if (key == 'w' && paddle1Y < 0.8f) paddle1Y += 0.1f;
+    if (key == 's' && paddle1Y > -0.8f) paddle1Y -= 0.1f;
+    if (key == 'o' && paddle2Y < 0.8f) paddle2Y += 0.1f;
+    if (key == 'l' && paddle2Y > -0.8f) paddle2Y -= 0.1f;
+    if (key == 'p') isPaused = !isPaused;
 }
 
 int main(int argc, char** argv) {
