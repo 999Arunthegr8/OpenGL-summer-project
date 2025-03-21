@@ -109,10 +109,12 @@ void update(int value) {
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    if (key == 'w' && paddle1Y < 0.8f) paddle1Y += 0.1f;
-    if (key == 's' && paddle1Y > -0.8f) paddle1Y -= 0.1f;
-    if (key == 'o' && paddle2Y < 0.8f) paddle2Y += 0.1f;
-    if (key == 'l' && paddle2Y > -0.8f) paddle2Y -= 0.1f;
+    if (!isPaused) {
+        if (key == 'w' && paddle1Y < 0.8f) paddle1Y += 0.1f;
+        if (key == 's' && paddle1Y > -0.8f) paddle1Y -= 0.1f;
+        if (key == 'o' && paddle2Y < 0.8f) paddle2Y += 0.1f;
+        if (key == 'l' && paddle2Y > -0.8f) paddle2Y -= 0.1f;
+    }
     if (key == 'p') isPaused = !isPaused;
 }
 
