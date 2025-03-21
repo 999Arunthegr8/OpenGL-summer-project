@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)Dependencies\freeglut\include;C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\Dependencies\freeglut\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\Dependencies\freeglut\include;$(SolutionDir)Dependencies\freeglut\include;$(IncludePath)</IncludePath>
     <LibraryPath>"$(SolutionDir)Dependencies\freeglut\lib\$(Platform)";$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -79,8 +79,8 @@
     <LibraryPath>"$(SolutionDir)Dependencies\freeglut\lib\$(Platform)";$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\Dependencies\freeglut\include;$(SolutionDir)Dependencies\freeglut\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Dependencies\freeglut\lib\$(Platform);$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\Dependencies\freeglut\include;$(SolutionDir)Dependencies\freeglut\include;$(IncludePath)</IncludePath>
+    <LibraryPath>"$(SolutionDir)Dependencies\freeglut\lib\$(Platform)";$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\Dependencies\freeglut\include;$(SolutionDir)Dependencies\freeglut\include;$(IncludePath)</IncludePath>
@@ -140,7 +140,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>freeglut.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\Dependencies\freeglut\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\Dependencies\freeglut\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>
