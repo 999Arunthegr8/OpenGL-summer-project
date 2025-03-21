@@ -29,6 +29,7 @@ typedef struct {
 typedef enum {
     GAME_START,
     GAME_PLAYING,
+    GAME_PAUSED,
     GAME_OVER
 } GameState;
 
@@ -138,25 +139,31 @@ void display(void) {
     drawBall(ball, 1.0, 0.5, 0.0);  // Orange ball
 
     // Draw score
-    sprintf_s(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
+    sprintf(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
     drawText(WINDOW_WIDTH / 2 - 70, 30, scoreText);
 
     // Draw game state messages
     if (gameState == GAME_START) {
         drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2, "Press SPACE to start the game");
     }
+    else if (gameState == GAME_PAUSED) {
+        drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2, "GAME PAUSED - Press P to resume");
+    }
     else if (gameState == GAME_OVER) {
         char winnerText[100];
         if (paddleLeft.score >= winningScore) {
-            sprintf_s(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
         else {
-            sprintf_s(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
 
         drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 30, winnerText);
         drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2, "Press R to restart or Q to quit");
     }
+
+    // Display controls info at the bottom of the screen
+    drawText(10, WINDOW_HEIGHT - 20, "Controls: W/S - Left Paddle, Arrow Up/Down - Right Paddle, P - Pause/Resume");
 
     glutSwapBuffers();
 }
@@ -180,6 +187,15 @@ void keyboard(unsigned char key, int x, int y) {
 
     if (key == ' ' && gameState == GAME_START) {
         gameState = GAME_PLAYING;
+    }
+
+    if (key == 'p' || key == 'P') {
+        if (gameState == GAME_PLAYING) {
+            gameState = GAME_PAUSED;
+        }
+        else if (gameState == GAME_PAUSED) {
+            gameState = GAME_PLAYING;
+        }
     }
 
     if (key == 'r' && gameState == GAME_OVER) {
@@ -332,31 +348,32 @@ void checkCollision(void) {
 
 // Update game state
 void updateGame(void) {
-    // Left paddle movement (W and S keys)
-    if (keys['w'] || keys['W']) {
-        paddleLeft.y -= paddleLeft.speed;
-    }
-    if (keys['s'] || keys['S']) {
-        paddleLeft.y += paddleLeft.speed;
-    }
-
-    // Right paddle movement (Up and Down arrow keys)
-    if (keys[GLUT_KEY_UP]) {
-        paddleRight.y -= paddleRight.speed;
-    }
-    if (keys[GLUT_KEY_DOWN]) {
-        paddleRight.y += paddleRight.speed;
-    }
-
-    // Keep paddles within bounds
-    if (paddleLeft.y < 0) paddleLeft.y = 0;
-    if (paddleLeft.y + paddleLeft.height > WINDOW_HEIGHT) paddleLeft.y = WINDOW_HEIGHT - paddleLeft.height;
-
-    if (paddleRight.y < 0) paddleRight.y = 0;
-    if (paddleRight.y + paddleRight.height > WINDOW_HEIGHT) paddleRight.y = WINDOW_HEIGHT - paddleRight.height;
-
-    // Update ball position
+    // Only update game if it's in PLAYING state
     if (gameState == GAME_PLAYING) {
+        // Left paddle movement (W and S keys)
+        if (keys['w'] || keys['W']) {
+            paddleLeft.y -= paddleLeft.speed;
+        }
+        if (keys['s'] || keys['S']) {
+            paddleLeft.y += paddleLeft.speed;
+        }
+
+        // Right paddle movement (Up and Down arrow keys)
+        if (keys[GLUT_KEY_UP]) {
+            paddleRight.y -= paddleRight.speed;
+        }
+        if (keys[GLUT_KEY_DOWN]) {
+            paddleRight.y += paddleRight.speed;
+        }
+
+        // Keep paddles within bounds
+        if (paddleLeft.y < 0) paddleLeft.y = 0;
+        if (paddleLeft.y + paddleLeft.height > WINDOW_HEIGHT) paddleLeft.y = WINDOW_HEIGHT - paddleLeft.height;
+
+        if (paddleRight.y < 0) paddleRight.y = 0;
+        if (paddleRight.y + paddleRight.height > WINDOW_HEIGHT) paddleRight.y = WINDOW_HEIGHT - paddleRight.height;
+
+        // Update ball position
         ball.x += ball.dx * ball.speed;
         ball.y += ball.dy * ball.speed;
 
