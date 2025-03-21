@@ -1,9 +1,1 @@
-﻿  main.cpp
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(14,26): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(14,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(31,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(32,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(42,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(42,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(42,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-  PongPossibly.vcxproj -> C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe
+﻿  PongPossibly.vcxproj -> C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe
