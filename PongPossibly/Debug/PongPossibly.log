@@ -1,13 +1,16 @@
 ﻿  main.cpp
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(98,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(237,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(246,23): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(250,23): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(258,23): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(262,23): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(273,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(282,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(93,27): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(107,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(118,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(277,23): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(286,23): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(294,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(290,23): warning C4305: '=': truncation from 'double' to 'float'
 C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(298,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(302,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(320,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(329,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(333,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(341,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\PongPossibly\main.cpp(345,23): warning C4305: '=': truncation from 'double' to 'float'
+  LINK : C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\Debug\PongPossibly.exe not found or not built by the last incremental link; performing full link
   PongPossibly.vcxproj -> C:\Users\ACER\Desktop\Pingpong project\Aruncodes\OpenGL-summer-project\Debug\PongPossibly.exe

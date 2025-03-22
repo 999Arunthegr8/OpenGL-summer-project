@@ -23,6 +23,10 @@ typedef struct {
     float radius;     // Ball radius
     float dx, dy;     // Direction
     float speed;      // Speed
+    float baseSpeed;  // Base speed to reset to when a point is scored
+    float maxSpeed;   // Maximum speed the ball can reach
+    float speedIncrement; // How much to increase the speed after each hit
+    int hitCounter;   // Counter for consecutive hits without scoring
 } Ball;
 
 // Game state
@@ -50,6 +54,7 @@ void specialKeys(int key, int x, int y);
 void specialKeysUp(int key, int x, int y);
 void timer(int value);
 void resetGame(void);
+void resetBall(bool goingRight);
 void drawText(float x, float y, const char* string);
 void drawPaddle(Paddle paddle, float r, float g, float b);
 void drawBall(Ball ball, float r, float g, float b);
@@ -82,13 +87,27 @@ void init(void) {
     ball.y = WINDOW_HEIGHT / 2;
     ball.dx = -1.0;
     ball.dy = 0.0;
-    ball.speed = 3.0;  // Reduced speed for better playability
+    ball.baseSpeed = 3.0;  // Starting speed
+    ball.speed = ball.baseSpeed;
+    ball.maxSpeed = 10.0;  // Maximum speed the ball can reach
+    ball.speedIncrement = 0.2;  // Increase speed by this much after each hit
+    ball.hitCounter = 0;   // Initialize hit counter
 
     // Initialize game state
     gameState = GAME_START;
 
     // Initialize key states
     memset(keys, 0, sizeof(keys));
+}
+
+// Reset the ball after a point is scored
+void resetBall(bool goingRight) {
+    ball.x = WINDOW_WIDTH / 2;
+    ball.y = WINDOW_HEIGHT / 2;
+    ball.dx = goingRight ? 1.0 : -1.0;
+    ball.dy = 0.0;
+    ball.speed = ball.baseSpeed;  // Reset to base speed when a point is scored
+    ball.hitCounter = 0;          // Reset hit counter
 }
 
 // Draw text on the screen
@@ -127,6 +146,7 @@ void drawBall(Ball ball, float r, float g, float b) {
 // Display function
 void display(void) {
     char scoreText[100];
+    char speedText[100];
 
     // Clear the screen
     glClear(GL_COLOR_BUFFER_BIT);
@@ -139,8 +159,12 @@ void display(void) {
     drawBall(ball, 1.0, 0.5, 0.0);  // Orange ball
 
     // Draw score
-    sprintf(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
+    sprintf_s(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
     drawText(WINDOW_WIDTH / 2 - 70, 30, scoreText);
+
+    // Draw ball speed (new)
+    sprintf_s(speedText, "Ball Speed: %.1f", ball.speed);
+    drawText(WINDOW_WIDTH / 2 - 70, 60, speedText);
 
     // Draw game state messages
     if (gameState == GAME_START) {
@@ -152,10 +176,10 @@ void display(void) {
     else if (gameState == GAME_OVER) {
         char winnerText[100];
         if (paddleLeft.score >= winningScore) {
-            sprintf(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf_s(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
         else {
-            sprintf(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf_s(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
 
         drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 30, winnerText);
@@ -277,6 +301,13 @@ void checkCollision(void) {
             // Bottom section - go down at fixed angle
             ball.dy = 0.7;
         }
+
+        // Increase ball speed and hitCounter after a successful hit
+        ball.hitCounter++;
+        if (ball.speed < ball.maxSpeed) {
+            ball.speed += ball.speedIncrement;
+            if (ball.speed > ball.maxSpeed) ball.speed = ball.maxSpeed;
+        }
     }
 
     // Ball collision with right paddle
@@ -313,6 +344,13 @@ void checkCollision(void) {
             // Bottom section - go down at fixed angle
             ball.dy = 0.7;
         }
+
+        // Increase ball speed and hitCounter after a successful hit
+        ball.hitCounter++;
+        if (ball.speed < ball.maxSpeed) {
+            ball.speed += ball.speedIncrement;
+            if (ball.speed > ball.maxSpeed) ball.speed = ball.maxSpeed;
+        }
     }
 
     // Ball out of bounds (left)
@@ -322,11 +360,7 @@ void checkCollision(void) {
             gameState = GAME_OVER;
         }
         else {
-            // Reset ball position
-            ball.x = WINDOW_WIDTH / 2;
-            ball.y = WINDOW_HEIGHT / 2;
-            ball.dx = 1.0;
-            ball.dy = 0.0;
+            resetBall(true);  // Reset ball going right
         }
     }
 
@@ -337,11 +371,7 @@ void checkCollision(void) {
             gameState = GAME_OVER;
         }
         else {
-            // Reset ball position
-            ball.x = WINDOW_WIDTH / 2;
-            ball.y = WINDOW_HEIGHT / 2;
-            ball.dx = -1.0;
-            ball.dy = 0.0;
+            resetBall(false);  // Reset ball going left
         }
     }
 }
@@ -398,6 +428,8 @@ void resetGame(void) {
     ball.y = WINDOW_HEIGHT / 2;
     ball.dx = -1.0;
     ball.dy = 0.0;
+    ball.speed = ball.baseSpeed;  // Reset to base speed
+    ball.hitCounter = 0;          // Reset hit counter
 
     gameState = GAME_START;
 }
