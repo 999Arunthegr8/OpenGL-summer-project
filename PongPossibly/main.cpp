@@ -9,7 +9,7 @@ const float PI = 3.14159265358979323846f;
 //paddle properties
 float paddleX = -0.9f, paddleY = 0.0f;
 const float paddleWidth = 0.04f, paddleHeight = 0.2f;
-const float paddleSpeed = 0.03f;
+const float paddleSpeed = 0.027f;
 //paddle movement flags
 bool moveUp = false, moveDown = false;
 
@@ -74,10 +74,9 @@ static void onePlayerMode()
 		if (isGameOver)
 		{
 			std::ostringstream gameOverText;
-			gameOverText << "Game Over!";
-			drawText(gameOverText.str().c_str(), -0.15f, 0.7f);
+			gameOverText << "Game Over! Hit 'R' to restart the game.";
+			drawText(gameOverText.str().c_str(), -0.65f, 0.0f);
 		}
-
 	}
 	glutSwapBuffers();
 }
@@ -94,12 +93,12 @@ void update()
 {
 	if (!isGameRunning) return;
 	//smooth paddle movement
-	if (moveUp && paddleY + paddleHeight < 1.0f)
+	if (moveUp && paddleY + paddleHeight < 0.95f)
 	{
 		paddleY += paddleSpeed;
 	}
 
-	if (moveDown && paddleY > -1.0f)
+	if (moveDown && paddleY > -0.95f)
 	{
 		paddleY -= paddleSpeed;
 	}
@@ -175,7 +174,7 @@ void keyboard(unsigned char key, int x, int y)
 
 	case 'r':
 		std::cout << "Game is up" << std::endl;
-		if (!isGameRunning) {
+		if (!isGameRunning || isGameOver) {
 			isGameRunning = true;
 			isGameOver = false;
 			score = 0;
