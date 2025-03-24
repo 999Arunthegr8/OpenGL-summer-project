@@ -225,7 +225,7 @@ int main(int argc, char** argv)
 	glutInitWindowPosition(100, 100);
 	glutInitWindowSize(500, 500);
 
-	glutCreateWindow("Animation");
+	glutCreateWindow("Possibly Pong");
 
 	glClearColor(0.0, 0.0, 0.0, 1.0);
 	glutDisplayFunc(onePlayerMode);
