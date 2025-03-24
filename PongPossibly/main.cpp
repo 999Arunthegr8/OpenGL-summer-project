@@ -180,7 +180,6 @@ void keyboard(unsigned char key, int x, int y)
 		break;
 
 	case 'r':
-		std::cout << "Game is up" << std::endl;
 		if (!isGameRunning || isGameOver) {
 			isGameRunning = true;
 			isGameOver = false;
@@ -196,7 +195,6 @@ void keyboard(unsigned char key, int x, int y)
 
 	case 'p':
 		isGamePaused = !isGamePaused;
-		std::cout << "Game is " << (isGamePaused ? "paused" : "being played") << std::endl;
 		glutPostRedisplay(); // force a redraw to display updated status text
 		break;
 	}
