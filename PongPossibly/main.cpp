@@ -17,7 +17,7 @@ bool moveUp = false, moveDown = false;
 float ballX = 0.0f, ballY = 0.0f;
 float ballRadius = 0.025f;
 float ballSpeed = 0.01f;
-float maxSpeed = 0.03f;
+float maxSpeed = 0.025f;
 float ballDirX = -1.0f, ballDirY = 0.5f;
 
 //game functions
@@ -26,7 +26,7 @@ bool isGameOver = false;
 bool isGameRunning = false;
 bool isGamePaused = false;
 
-void drawText(const char* text, float x, float y) {
+static void drawText(const char* text, float x, float y) {
 	glColor3f(1.0, 1.0, 1.0);  // White text
 	glRasterPos2f(x, y);        // Set position
 
@@ -71,6 +71,13 @@ static void onePlayerMode()
 		scoreText << "Score: " << score;
 		drawText(scoreText.str().c_str(), -0.1f, 0.9f); // Position at top center
 
+		if (!isGameOver) {
+			//display game status
+			std::ostringstream gamePausedText;
+			gamePausedText << (isGamePaused ? "Paused!" : "Playing!") << " Hit 'P' to " << (isGamePaused ? "play" : "pause") << " the game.";
+			drawText(gamePausedText.str().c_str(), -0.5f, -0.95f); // Position at bottom center of the screen
+		}
+
 		if (isGameOver)
 		{
 			std::ostringstream gameOverText;
@@ -89,9 +96,9 @@ static void init()
 	glOrtho(-1.0, 1.0, -1.0, 1.0, -1.0, 1.0);
 }
 
-void update()
+static void update()
 {
-	if (!isGameRunning) return;
+	if (!isGameRunning || isGamePaused) return;
 	//smooth paddle movement
 	if (moveUp && paddleY + paddleHeight < 0.95f)
 	{
@@ -127,7 +134,7 @@ void update()
 		ballDirX /= length;
 		ballDirY /= length;
 
-		if (ballSpeed < maxSpeed)
+		if (ballSpeed < maxSpeed && score % 3 == 0)
 		{
 			ballSpeed += 0.0025f;
 		}
@@ -186,11 +193,17 @@ void keyboard(unsigned char key, int x, int y)
 			glutTimerFunc(0, timer, 0); // Restart the game loop
 		}
 		break;
+
+	case 'p':
+		isGamePaused = !isGamePaused;
+		std::cout << "Game is " << (isGamePaused ? "paused" : "being played") << std::endl;
+		glutPostRedisplay(); // force a redraw to display updated status text
+		break;
 	}
 }
 
 // function to handle key release
-void keyboardUp(unsigned char key, int x, int y)
+static void keyboardUp(unsigned char key, int x, int y)
 {
 	switch (key)
 	{
