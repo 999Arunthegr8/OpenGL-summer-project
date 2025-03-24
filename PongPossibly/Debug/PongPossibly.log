@@ -1,1 +1,7 @@
-﻿  PongPossibly.vcxproj -> C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe
+﻿  main.cpp
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(40,26): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(40,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(87,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(87,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(87,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+  PongPossibly.vcxproj -> C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe
