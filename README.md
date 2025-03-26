@@ -8,7 +8,7 @@ Authors:
   <li>Arun Basnet </li>
   <li>Eyuzik Chhunju</li>
   <li>Abheet Budhathoki</li>
-  <li>Garima Adhikari</li>
+  <li>Grishmika Adhikari</li>
 </ol>
 
 # How To Play?
