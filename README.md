@@ -12,10 +12,10 @@ Authors:
 </ol>
 
 # How To Play?
-<strong>Two-Player Mode</strong>
+<strong>Two-Player Mode</strong><br>
 2 Players to play the game. Player 1 controls the left paddle using W and S keys. Player 2 controls the right paddle using O and L keys.
 
-<strong>One-Player Mode</strong>
+<strong>One-Player Mode</strong><br>
 A single player plays against the wall controlling the paddle using W and S keys.
 
 # Rules
