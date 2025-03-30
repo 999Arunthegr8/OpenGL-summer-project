@@ -19,12 +19,14 @@ Authors:
 A single player plays against the wall controlling the paddle using W and S keys.
 
 # Rules
-
+<strong>Two-Player Mode</strong><br>
 If either of the player fails to hit the incoming ball
 with their paddle, the opponent wins a point.
-
 Each game is played to 10 points. The first one to reach
 10 points wins.
+
+<strong>One-Player Mode</strong><br>
+Player plays against the wall infinitely with the difficulty constantly increasing until maximum ball speed is achieved.
 
 # Key Features:
 
