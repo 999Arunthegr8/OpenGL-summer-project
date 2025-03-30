@@ -5,15 +5,18 @@ This is an academic project work where we have created a 2D Pong Game using <str
 Authors:
 
 <ol>
+  <li>Abheet Budhathoki</li>
   <li>Arun Basnet </li>
   <li>Eyuzik Chhunju</li>
-  <li>Abheet Budhathoki</li>
   <li>Grishmika Adhikari</li>
 </ol>
 
 # How To Play?
-
+<strong>Two-Player Mode</strong>
 2 Players to play the game. Player 1 controls the left paddle using W and S keys. Player 2 controls the right paddle using O and L keys.
+
+<strong>One-Player Mode</strong>
+A single player plays against the wall controlling the paddle using W and S keys.
 
 # Rules
 
@@ -26,9 +29,10 @@ Each game is played to 10 points. The first one to reach
 # Key Features:
 
 <ol>
-  <li>2-player game</li>
+  <li>2-player mode</li>
+  <li>1-player mode</li>
   <li>Score-counting</li>
-  <li>1D (or maybe 2D) player controls</li>
+  <li>1D player controls</li>
   <li>Pause game</li>
   <li>New game</li>
 </ol>
