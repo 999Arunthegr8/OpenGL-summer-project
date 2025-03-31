@@ -1,3 +1,19 @@
 ﻿  main.cpp
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(44,26): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(44,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(97,25): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(97,20): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(97,15): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(303,27): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(317,15): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(328,23): warning C4018: '<': signed/unsigned mismatch
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(496,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(500,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(508,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(512,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(539,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(543,24): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(551,23): warning C4305: '=': truncation from 'double' to 'float'
+C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\PongPossibly\main.cpp(555,23): warning C4305: '=': truncation from 'double' to 'float'
   LINK : C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe not found or not built by the last incremental link; performing full link
   PongPossibly.vcxproj -> C:\eyuziksFiles\3rd semester\Computer Graphics\Project\OpenGL-summer-project\PongPossibly\Debug\PongPossibly.exe

@@ -369,11 +369,11 @@ void display(void) {
     drawBall(ball, 1.0, 0.5, 0.0);  // Orange ball
 
     // Draw score
-    sprintf(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
+    sprintf_s(scoreText, "Score: %d - %d", paddleLeft.score, paddleRight.score);
     drawText(WINDOW_WIDTH / 2 - 70, 30, scoreText);
 
     // Draw ball speed (new)
-    sprintf(speedText, "Ball Speed: %.1f", ball.speed);
+    sprintf_s(speedText, "Ball Speed: %.1f", ball.speed);
     drawText(WINDOW_WIDTH / 2 - 70, 60, speedText);
 
     // Draw game state messages
@@ -386,10 +386,10 @@ void display(void) {
     else if (gameState == GAME_OVER) {
         char winnerText[100];
         if (paddleLeft.score >= winningScore) {
-            sprintf(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf_s(winnerText, "Player 1 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
         else {
-            sprintf(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
+            sprintf_s(winnerText, "Player 2 Wins! Score: %d - %d", paddleLeft.score, paddleRight.score);
         }
 
         drawText(WINDOW_WIDTH / 2 - 150, WINDOW_HEIGHT / 2 - 30, winnerText);
